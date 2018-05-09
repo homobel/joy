@@ -1,0 +1,2 @@
+
+<div style="font-size: @(data.size)px; color: @data.color;">@data.text</div>

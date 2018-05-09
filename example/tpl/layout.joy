@@ -1,0 +1,31 @@
+@import * as li from 'utils/li' @* markup from script *@
+@import * as l10n from 'utils/l10n'
+@import * as input from 'tpl/forms/input' @* markup from other tpl *@
+@import * as alert from 'tpl/alert'
+
+<article>
+    <h1>@!l10n('Hello, this is %s from %s', 'Archy', data.name)!</h1>
+    <hr />
+    <h2>@l10n('Our staff'):</h2>
+    <ul>
+        @each key:employee in data.staff {
+            @!li() {
+                <b>@key</b>
+                @!input(employee.name)
+                <i>@employee.age</i>
+            }
+        }
+    </ul>
+
+    @!alert() {
+        {
+            "text": "Hi",
+            "color": "green",
+            "size": 30
+        }
+    }
+
+    @!alert(text="it's me again", color='blue', size=32) {abc}
+
+    @data.empty
+</article>
