@@ -1,3 +1,0 @@
-@each item in items {
-    <span>@i. Hi @item</span>
-}

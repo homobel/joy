@@ -2,3 +2,5 @@ node_modules
 .idea/
 *.sublime-project
 *.sublime-workspace
+example/tpl/test.joy
+example/scripts/tpl/test.js

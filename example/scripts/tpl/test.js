@@ -1,1 +1,0 @@
-define(['joy-runtime'], function(joy) {return function(data) {data=joy.o(data);return joy.l(items, function(item,i) {return '\r\n    <span>'+joy.e(joy.p(i))+'. Hi '+joy.e(joy.p(item))+'</span>\r\n'})+'\r\n';}});
