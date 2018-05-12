@@ -1,6 +1,7 @@
 define(['tpl/layout'], (layout) => {
     const html = layout({
         name: '<i>Triggre</i>',
+        greeting: "Hi",
         staff: [
             {
                 name: 'Archy',

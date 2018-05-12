@@ -1,1 +1,3 @@
-@foo(name=12) {@foo(name=12) {@foo(name=12) {<span>}}}
+@each item in items {
+    <span>@i. Hi @item</span>
+}

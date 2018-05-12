@@ -20,7 +20,7 @@
     };
 
     function escape(string) {
-        return String(string).replace(/[&<>"'`=\/]/g, function fromEntityMap (s) {
+        return String(string).replace(/[&<>"'`=\/]/g, function(s) {
             return entityMap[s];
         });
     }

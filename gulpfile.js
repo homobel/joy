@@ -4,7 +4,6 @@ const gulp = require('gulp');
 const glob = require('glob');
 const peg = require("pegjs");
 const async = require('async');
-const prettier = require('prettier');
 const ensureDir = require('ensureDir');
 const joy = require('./index');
 
@@ -49,7 +48,7 @@ gulp.task('example', (cb) => {
                             return;
                         }
 
-                        fs.writeFileSync(filePath, prettier.format(data), 'utf8');
+                        fs.writeFileSync(filePath, data, 'utf8');
                         fileCb();
                     });
 
@@ -70,8 +69,6 @@ gulp.task('runtime', (cb) => {
 });
 
 gulp.task('watch', ['parser', 'example', 'runtime'], function() {
-    'use strict';
-
     gulp.watch('grammar/*.pegjs', ['parser']);
     gulp.watch('example/**/*.joy', ['example']);
     gulp.watch('runtime.js', ['runtime']);

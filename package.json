@@ -1,23 +1,42 @@
 {
-  "name": "joyjs",
-  "version": "0.0.1",
-  "description": "joy - js template engine",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "keywords": [],
-  "author": "Archy Sharp",
-  "license": "MIT",
-  "dependencies": {
-    "asty": "^1.7.6",
-    "async": "^2.6.0",
-    "commander": "^2.15.1",
-    "ensureDir": "^1.0.6",
-    "glob": "^7.1.2",
-    "gulp": "^3.9.1",
-    "pegjs": "^0.10.0",
-    "pegjs-util": "^1.4.9",
-    "prettier": "^1.12.1"
-  }
+    "name": "joytpl",
+    "version": "0.0.1",
+    "description": "joy - js template engine with short syntax and modern features",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/homobel/joy"
+    },
+    "bugs": {
+        "url": "https://github.com/homobel/joy/issues"
+    },
+    "bin": {
+        "joytpl": "bin/joytpl.js"
+    },
+    "keywords": [
+        "joy",
+        "template",
+        "html",
+        "precompilation",
+        "modular",
+        "razor"
+    ],
+    "author": "Archy Sharp",
+    "license": "MIT",
+    "dependencies": {
+        "asty": "^1.7.6",
+        "commander": "^2.15.1",
+        "pegjs-util": "^1.4.9",
+        "prettier": "^1.12.1"
+    },
+    "devDependencies": {
+        "glob": "^7.1.2",
+        "ensureDir": "^1.0.6",
+        "async": "^2.6.0",
+        "pegjs": "^0.10.0",
+        "gulp": "^3.9.1"
+    }
 }

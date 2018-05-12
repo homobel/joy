@@ -3,8 +3,8 @@
 const fs = require('fs');
 const path = require('path');
 const program = require('commander');
-const packageFile = require('../package.json');
 const defaults = require('../lib/defaults');
+const packageFile = require('../package.json');
 const joy = require('../' + packageFile.main);
 
 function resolve(value) {
@@ -16,6 +16,7 @@ function resolve(value) {
             return value;
         } catch (e) {
             console.error('file not exists');
+            return;
         }
     }
     console.error('file not specified');
@@ -39,11 +40,12 @@ const inputPath = resolve(program.args[0]);
 if (inputPath) {
     const input = fs.readFileSync(inputPath, program.charset);
     const options = {
+        charset: program.charset,
         modules: program.modules,
-        jsVersion: program.js,
         runtimePath: program.runtimePath,
         shortRuntime: program.shortRuntime,
-        beautify: program.beautify,
+        jsVersion: program.js,
+        beautify: program.beautify
     };
 
     joy.build(input, options, function(err, data) {

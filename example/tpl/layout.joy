@@ -19,7 +19,7 @@
 
     @!alert() {
         {
-            "text": "Hi",
+            "text": "@data.greeting",
             "color": "green",
             "size": 30
         }

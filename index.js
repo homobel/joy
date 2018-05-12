@@ -1,13 +1,17 @@
 const ASTY = require('asty');
+const prettier = require('prettier');
 const pegUtil = require('pegjs-util');
 const parser = require('./lib/generated/parser');
 const processor = require('./lib/processor/processor');
 const defaults = require('./lib/defaults');
 
-//TODO: beautify
-
 module.exports = {
     build(input, options, cb) {
+        if (cb === undefined && typeof options === 'function') {
+            cb = options;
+            options = {};
+        }
+
         options = Object.assign({}, defaults, options);
 
         this.parse(input, options, (err, ast) => {
@@ -41,7 +45,13 @@ module.exports = {
     },
     process(parsed, options, cb) {
         try {
-            cb(null, processor(parsed, options));
+            let res = processor(parsed, options);
+
+            if (options.beautify) {
+                res = prettier.format(res);
+            }
+
+            cb(null, res);
         }
         catch(err) {
             cb(err);
