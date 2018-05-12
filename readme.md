@@ -1,4 +1,4 @@
-#Joy
+# Joy
 
 Js template engine.
 
@@ -66,13 +66,13 @@ joy.build(inputText, options, function(err, data) {
 
 ## Syntax
 
-####Comments
+#### Comments
 
 ```joy
 @* comment goes to "" *@
 ```
 
-####Imports
+#### Imports
 
 ```joy
 @import * as foo from 'bar/foo' 
@@ -85,7 +85,7 @@ joy.build(inputText, options, function(err, data) {
 *@
 ```
 
-####Escape
+#### Escape
 
 Start char escape
 
@@ -104,7 +104,7 @@ Escape unpaired brackets in blocks
 
 Paired brackets may be unescaped
 
-####Variables
+#### Variables
 
 ```joy
 @htmlEscaped @* -> escape utility by default *@
@@ -122,7 +122,7 @@ All variables passed in a tpl function via object can be used with data prefix l
 Hello, @data.name!
 ```
 
-####Functions
+#### Functions
 
 Arguments in functions are expressions with any supported types.
 
@@ -168,7 +168,7 @@ Second - we want to use a tpl from other one:
 }
 ```
 
-####Conditions
+#### Conditions
 
 ```joy
 @if a < 1 {
@@ -182,7 +182,7 @@ else {
 }
 ```
 
-####Loops
+#### Loops
 
 ```joy
 @each item in items {
@@ -194,7 +194,7 @@ else {
 }
 ```
 
-####Types
+#### Types
 
 Types that can be used in expressions:
 
@@ -207,7 +207,7 @@ Types that can be used in expressions:
 
 **OBJECTS AND ARRAYS ARE NOT SUPPORTED YET**
 
-####Operators
+#### Operators
 
 Operators that can be used in expressions:
 
