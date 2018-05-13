@@ -1,3 +1,4 @@
+
 const fs = require('fs');
 const path = require('path');
 const gulp = require('gulp');
@@ -28,7 +29,7 @@ gulp.task('example', (cb) => {
                 joy.build(fs.readFileSync(file, 'utf8'), {
                     modules: 'amd',
                     jsVersion: 'es5',
-                    runtimePath: 'joy-runtime',
+                    runtimePath: 'libs/joy-runtime',
                     shortRuntime: true
                 }, function(err, data) {
                     if (err) {
@@ -48,22 +49,20 @@ gulp.task('example', (cb) => {
                             return;
                         }
 
-                        fs.writeFileSync(filePath, data, 'utf8');
+                        fs.writeFileSync(filePath, data.content, 'utf8');
                         fileCb();
                     });
 
 
                 });
             };
-        }), () => {
-            cb();
-        })
+        }), cb);
     });
 });
 
 gulp.task('runtime', (cb) => {
     fs.createReadStream(path.join(__dirname, 'runtime.js'))
-        .pipe(fs.createWriteStream(path.join(__dirname, 'example/scripts/joy-runtime.js')));
+        .pipe(fs.createWriteStream(path.join(__dirname, 'example/scripts/libs/joy-runtime.js')));
 
     cb();
 });

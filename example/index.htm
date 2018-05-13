@@ -6,6 +6,66 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Joy test</title>
+    <style>
+        html,
+        body {
+            font: normal 14px/16px Arial, sans-serif;
+            background: #e9e9e9;
+            margin: 0;
+            padding: 0;
+        }
+
+        .alert {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: #f0f0f0;
+            border-radius: 5px;
+            padding: 20px;
+            min-width: 150px;
+        }
+
+        .alert:nth-child(1) {
+            top: 74px;
+        }
+
+        .alert.info {
+            background: chartreuse;
+            color: #222;
+        }
+
+        .alert.error {
+            background: crimson;
+            color: #f0f0f0;
+        }
+
+        nav {
+            background: #222222;
+            padding: 30px;
+        }
+
+        nav a {
+            color: #f0f0f0;
+            font-size: 16px;
+            text-decoration: none;
+        }
+
+        nav a:hover {
+            color: #b0b0b0;
+        }
+
+        article {
+            padding: 20px;
+        }
+
+        .features {
+            list-style-type: none;
+        }
+
+        .features li {
+            padding: 5px;
+        }
+    </style>
     <script data-main="scripts/main" src="scripts/libs/require.js"></script>
 </head>
 <body>

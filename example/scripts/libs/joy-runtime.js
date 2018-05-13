@@ -7,7 +7,6 @@
         root.returnExports = factory();
     }
 }(typeof self !== 'undefined' ? self : this, function () {
-
     var entityMap = {
         '&': '&amp;',
         '<': '&lt;',
@@ -20,7 +19,7 @@
     };
 
     function escape(string) {
-        return String(string).replace(/[&<>"'`=\/]/g, function fromEntityMap (s) {
+        return String(string).replace(/[&<>"'`=\/]/g, function(s) {
             return entityMap[s];
         });
     }
@@ -47,7 +46,35 @@
         return value;
     }
 
-    loop.print = 'p';
+    print.short = 'p';
+
+    function options(value) {
+        var onlyContent = true;
+
+        if (value !== null && typeof value === 'object') {
+            for(var prop in value) {
+                if (value.hasOwnProperty(prop)) {
+                    if (prop !== 'content') {
+                        onlyContent = false;
+                        break;
+                    }
+                }
+            }
+        }
+
+        if (onlyContent) {
+            try {
+                value = JSON.parse(value.content);
+            }
+            catch (err) {}
+
+            return value;
+        }
+
+        return value;
+    }
+
+    options.short = 'o';
 
     return {
         escape: escape,
@@ -57,6 +84,8 @@
         loop: loop,
         l: loop,
         print: print,
-        p: print
+        p: print,
+        options: options,
+        o: options
     };
 }));

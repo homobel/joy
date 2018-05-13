@@ -1,28 +1,11 @@
 #!/usr/bin/env node
 
 const fs = require('fs');
-const path = require('path');
 const program = require('commander');
 const defaults = require('../lib/defaults');
 const packageFile = require('../package.json');
 const joy = require('../' + packageFile.main);
-
-function resolve(value) {
-    if (typeof value === 'string') {
-        value = path.resolve(value);
-        try {
-            fs.accessSync(value, fs.F_OK);
-
-            return value;
-        } catch (e) {
-            console.error('file not exists');
-            return;
-        }
-    }
-    console.error('file not specified');
-
-    return null;
-}
+const resolve = require('./resolve');
 
 program
     .version(packageFile.version)
@@ -53,6 +36,6 @@ if (inputPath) {
             console.error(err);
             return;
         }
-        console.log(data);
+        console.log(data.content);
     });
 }

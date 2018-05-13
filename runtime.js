@@ -7,7 +7,6 @@
         root.returnExports = factory();
     }
 }(typeof self !== 'undefined' ? self : this, function () {
-
     var entityMap = {
         '&': '&amp;',
         '<': '&lt;',
