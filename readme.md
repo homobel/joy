@@ -16,10 +16,12 @@ Summary:
 
 ### Bash
 
-Installation
+Installation:
 ```bash
 npm i -g joytpl
+```
 
+```
 joytpl -h
 
   Usage: joytpl [options] <file ...>
@@ -36,10 +38,10 @@ joytpl -h
     -h, --help                          output usage information
 ```
 
-* modules: es6, commonjs, amd
-* jsVersion: es5, es6
+* **modules**: es6, commonjs, amd
+* **jsVersion**: es5, es6
 
-Write result in an output file
+Write result in an output file:
 ```bash
 joytpl path/to/input/file > output/file
 ```
@@ -58,57 +60,87 @@ joy.build(inputText, options, function(err, data) {
         console.error(err);
         return;
     }
-    
-    // result usage
-    
+
+    // data.content
+    // data.extracted
 });
 ```
+Beyond same options available in bash there some advanced ones:
+```
+{
+    ...
+    extractors: {type: [fn1, fn2], ...},
+    validators: {type: [fn3], ...}
+    
+    // fnN(node, exported, options) {...}
+}
+```
+You can add custom extractors or validators to specific AST node type.  
+Want to forbade some variables names or extract all l10n text to single JSON file? No problem.
 
 ## Syntax
 
 #### Comments
 
 ```joy
-@* comment goes to "" *@
+@* you will never recall what this code for *@
 ```
 
 #### Imports
 
 ```joy
 @import * as foo from 'bar/foo' 
+```
+Currently it's the only syntax supported.
 
-@*
-    based on modules option goes to:
-    import * as foo from 'bar/foo'
-    var foo = require('bar/foo');
-    define([..., 'bar/foo'], function(..., foo) {});
-*@
+Based on modules option it goes to:
+```js
+import * as foo from 'bar/foo'
+var foo = require('bar/foo');
+define([..., 'bar/foo'], function(..., foo) {});
 ```
 
 #### Escape
 
-Start char escape
+Start sequence escape:
 
 ```joy
-@@ @* goes to @ *@
+big.boss@@gmail.com
 ```
 
-Escape unpaired brackets in blocks
+Escape unpaired brackets in blocks:
 
 ```joy
 ... {
-    \} @* goes to } *@
-    \{ @* goes to { *@
+    \}
+    \{
 }
 ```
 
-Paired brackets may be unescaped
+Paired brackets may stay unescaped:
+
+```joy
+... {
+    <script type="application/json">
+        {
+            "foo": "bar"
+        }
+    </script>
+}
+```
 
 #### Variables
 
+All variables passed in a tpl function via object can be used with data prefix like:
 ```joy
-@htmlEscaped @* -> escape utility by default *@
-@!htmlRaw @* -> raw *@
+Hello, @data.name!
+```
+
+Some more examples:
+
+```joy
+@htmlEscaped @* escape utility by default *@
+@!htmlRaw @* raw html *@
 
 @foo.boo.htmlEscaped  @* with namespace *@
 @!foo.boo.htmlRaw
@@ -117,25 +149,20 @@ Paired brackets may be unescaped
 @!(hello)again
 ```
 
-All variables passed in a tpl function via object can be used with data prefix like:
-```joy
-Hello, @data.name!
-```
-
 #### Functions
 
 Arguments in functions are expressions with any supported types.
 
 ```joy
-@foo.fn(100 + 1, 99.23, null, true, false, "foo", 'foo', name='foo', lastname, gag(false, 2312) {
-    <span>@lol</span>
+@foo.fn(100.1 + 1, null, undefined, true, "foo", name='foo', !isEmpty, gag(false, 2312) {
+    <h1>@title</h1>
 })
 ```
 
-name='foo' named argument.
+Here _name='foo'_ is named argument.
 
-Unlike in js, **BLOCK AFTER FUNCTION IS ALSO FUNCTION'S NAMED ARGUMENT**(it's reserved name - content). Treat it as an easy form of passing big chunk of text.
-Also in case text in block is JSON it's parsed and passed to the function as a data object ignoring other arguments.
+Unlike in js, **BLOCK AFTER FUNCTION IS ALSO FUNCTION'S NAMED ARGUMENT**(it's reserved name - content). Treat it as an easy form of passing big chunk of text.  
+Also in case text in block is JSON it's parsed and passed to the function as a data object **ignoring other arguments**.
 
 If function has named argument all arguments must be named.
 
@@ -155,8 +182,13 @@ Second - we want to use a tpl from other one:
 @frame() {
     @fullName(name=data.name, surname=data.surname)
 }
+```
 
-@* OR *@
+or
+
+```joy
+@import * as frame from 'foo/frame'
+@import * as fullName from 'bar/fullName'
 
 @frame() {
     @fullName() {
@@ -171,27 +203,33 @@ Second - we want to use a tpl from other one:
 #### Conditions
 
 ```joy
-@if a < 1 {
-    Less
+@if n < 1 {
+    less
 }
-else if a > 1 && a < 100 {
-    In range
+else if n > 1 && n < 100 {
+    in range
 }
 else {
-    More
+    more
 }
 ```
 
 #### Loops
 
 ```joy
-@each item in items {
-    <span>@i. Hi @item</span>
-}
+<ul>
+    @each item in items {
+        <li>@i. Hi @item</li>
+    }
+<ul>
+```
 
-@each key:value in users {
-    <span>@key. Hi @value</span>
-}
+```joy
+<ul>
+    @each key:value in users {
+        <li>@key. Hi @value</li>
+    }
+<ul>
 ```
 
 #### Types
@@ -211,12 +249,14 @@ Types that can be used in expressions:
 
 Operators that can be used in expressions:
 
-* unary !+-
+* unary ! + -
 * && ||
 * < > <= >= == === != !==
-* +-
+* \+ -
 * \* / %
 
 **OTHER OPERATORS ARE NOT SUPPORTED YET**
+
+For more details see example directory.
 
 Enjoy! :)

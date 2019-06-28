@@ -3,12 +3,27 @@
 @import * as input from 'tpl/forms/input' @* markup from other tpl *@
 @import * as alert from 'tpl/alert'
 
+
+@!alert(type='info') {@data.info}
+@!alert() {
+    {
+        "content": "@data.error",
+        "type": "error"
+    }
+}
+
+<nav>
+    @each a in data.menuItems {
+        <a class="@if i % 2 {even} else {odd}" href="@a.url">@a.text</a>
+    }
+</nav>
+
 <article>
-    <h1>@!l10n('Hello, this is %s from %s', 'Archy', data.name)!</h1>
+    <h1>@!l10n('Hello from %s', data.title)!</h1>
     <hr />
-    <h2>@l10n('Our staff'):</h2>
-    <ul>
-        @each key:employee in data.staff {
+    <h2>@l10n('Loop with helpers'):</h2>
+    <ul class="features">
+        @each key:employee in data.users {
             @!li() {
                 <b>@key</b>
                 @!input(employee.name)
@@ -17,15 +32,6 @@
         }
     </ul>
 
-    @!alert() {
-        {
-            "text": "@data.greeting",
-            "color": "green",
-            "size": 30
-        }
-    }
-
-    @!alert(text="it's me again", color='blue', size=32) {abc}
-
+    <h2>@l10n('Empty value'):</h2>
     @data.empty
 </article>

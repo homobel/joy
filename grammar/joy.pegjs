@@ -206,34 +206,34 @@ expressionBlock
 
 multBinaryExpression
     = l:expressionArg WS* o:(MULT / DIV / DIV_REM) WS* r:multBinaryExpression {
-        return ast('Binary').add(l).add(r).set('oparator', o)
+        return ast('Binary').add(l).add(r).set('operator', o)
     }
     / expressionArg
 
 addBinaryExpression
     = l:multBinaryExpression WS* o:(PLUS / MINUS) WS* r:addBinaryExpression {
-        return ast('Binary').add(l).add(r).set('oparator', o)
+        return ast('Binary').add(l).add(r).set('operator', o)
     }
     / multBinaryExpression
 
 compBinaryExpression
     = l:addBinaryExpression WS* o:(LTE / GTE / LT / GT / EQ_STRICT / NOT_EQ_STRICT / EQ / NOT_EQ) WS* r:compBinaryExpression {
-        return ast('Binary').add(l).add(r).set('oparator', o)
+        return ast('Binary').add(l).add(r).set('operator', o)
     }
     / addBinaryExpression
 
 logicBinaryExpression
     = l:compBinaryExpression WS* o:(AND / OR) WS* r:logicBinaryExpression {
-        return ast('Binary').add(l).add(r).set('oparator', o)
+        return ast('Binary').add(l).add(r).set('operator', o)
     }
     / compBinaryExpression
 
 unaryExpression
     = o:(INV / PLUS / MINUS) r:types {
-        return ast('Unary').add(r).set('oparator', o)
+        return ast('Unary').add(r).set('operator', o)
     }
     / o:(INV / PLUS / MINUS) r:expressionBlock {
-        return ast('Unary').add(r).set('oparator', o)
+        return ast('Unary').add(r).set('operator', o)
     }
 
 expressionArg

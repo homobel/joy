@@ -1,3 +1,4 @@
+
 const fs = require('fs');
 const path = require('path');
 const gulp = require('gulp');
@@ -48,16 +49,14 @@ gulp.task('example', finish => {
                             return;
                         }
 
-                        fs.writeFileSync(filePath, data, 'utf8');
+                        fs.writeFileSync(filePath, data.content, 'utf8');
                         fileCb();
                     });
 
 
                 });
             };
-        }), () => {
-            finish();
-        })
+        }), finish)
     });
 });
 

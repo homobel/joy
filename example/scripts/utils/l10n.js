@@ -11,6 +11,10 @@ define(['dict'], (dict) => {
             return res;
         }
 
+        replaces.forEach(replace => {
+            key = key.replace('%s', replace);
+        });
+
         return key;
     };
 

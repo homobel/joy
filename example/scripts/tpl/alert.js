@@ -1,3 +1,3 @@
 define(['libs/joy-runtime'], function(joy) {
-return function(data) {data=joy.o(data);return '\r\n<div style="font-size: '+joy.e(joy.p(data.size))+'px; color: '+joy.e(joy.p(data.color))+';">'+joy.e(joy.p(data.text))+'</div>\r\n';}
+return function(data) {data=joy.o(data);return '\r\n<div class="alert '+joy.e(joy.p(data.type))+'">'+joy.e(joy.p(data.content))+'</div>\r\n';}
 });

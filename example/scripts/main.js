@@ -1,20 +1,3 @@
-define(['tpl/layout'], (layout) => {
-    const html = layout({
-        name: '<i>Triggre</i>',
-        greeting: "Hi",
-        staff: [
-            {
-                name: 'Archy',
-                age: 27
-            },
-            {
-                name: 'Denis',
-                age: 'ancient'
-            }
-        ]
-    });
-
-    document.body.innerHTML = html;
-
-    console.log(html);
+define(['tpl/layout', 'model'], (layout, model) => {
+    document.body.innerHTML = layout(model);
 });
