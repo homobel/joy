@@ -1,6 +1,6 @@
 {
     "name": "joytpl",
-    "version": "0.0.6",
+    "version": "0.0.7",
     "description": "joy - js template engine with short syntax and modern features",
     "main": "index.js",
     "scripts": {

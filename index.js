@@ -48,7 +48,7 @@ module.exports = {
             let res = processor(parsed, options);
 
             if (options.beautify) {
-                res.content = prettier.format(res.content);
+                res.content = prettier.format(res.content, {parser: 'babel'});
             }
 
             cb(null, res);
