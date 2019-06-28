@@ -29,7 +29,7 @@ joytpl -h
     -V, --version                       output the version number
     -t, --charset <charset>             files charset (default: utf8)
     -m, --modules <modules>             module system (default: es6)
-    -p, --runtime-path <runtimePath>    runtime path (default: joy-runtime)
+    -p, --runtime-path <runtimePath>    runtime path (default: joytpl/runtime)
     -s, --short-runtime <shortRuntime>  short runtime (default: false)
     -j, --js <jsVersion>                js version (default: es6)
     -b, --beautify <beautify>           formatted code (default: false)

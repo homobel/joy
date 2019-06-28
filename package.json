@@ -1,6 +1,6 @@
 {
     "name": "joytpl",
-    "version": "0.0.4",
+    "version": "0.0.5",
     "description": "joy - js template engine with short syntax and modern features",
     "main": "index.js",
     "scripts": {
@@ -27,16 +27,16 @@
     "author": "Archy Sharp",
     "license": "MIT",
     "dependencies": {
-        "asty": "^1.7.6",
-        "commander": "^2.15.1",
-        "pegjs-util": "^1.4.9",
-        "prettier": "^1.12.1"
+        "asty": "^1.8.6",
+        "commander": "^2.20.0",
+        "pegjs-util": "^1.4.17",
+        "prettier": "^1.18.2"
     },
     "devDependencies": {
-        "glob": "^7.1.2",
+        "glob": "^7.1.4",
         "ensureDir": "^1.0.6",
-        "async": "^2.6.0",
+        "async": "^3.1.0",
         "pegjs": "^0.10.0",
-        "gulp": "^3.9.1"
+        "gulp": "^4.0.2"
     }
 }
