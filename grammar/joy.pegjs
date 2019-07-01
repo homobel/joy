@@ -45,24 +45,17 @@ comment
 // import
 
 dep
-    = JOY_START 'import' pairs:(WS+ depExpression WS+ 'from')? WS+ path:string {
-        var res = ast('Import').add(path).set('value', text().substr(1))
-
-        if (pairs) {
-            res.add(pairs[1])
-        }
-
-        return res
+    // @import defaultExport from "module-name"
+    = JOY_START 'import' WS+ name:name WS+ 'from' WS+ path:string {
+        return ast('Import').add(path).set('value', text().substr(1)).add(name)
+    } /
+    // @import * as name from "module-name"
+    JOY_START 'import' pairs:(WS+ depTerm WS+ 'from') WS+ path:string {
+        return ast('Import').add(path).set('value', text().substr(1)).add(pairs[1]);
     }
 
-depExpression
-//    = OPEN_DESTRUCT WS* expr:depExpression WS* CLOSE_DESTRUCT {return expr}
-//    / expr:depTerm WS* ',' WS* exprs:depExpression {return expr.add(exprs)}
-//    / expr:depTerm {return expr}
-    = depTerm
-
 depTerm
-    = what:(depAll / name)rename:(WS+ 'as' WS+ name)? {
+    = what:(depAll / name) rename:(WS+ 'as' WS+ name)? {
         var res = ast('ImportPair').add(what)
 
         if (rename) {

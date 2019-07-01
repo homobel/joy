@@ -90,13 +90,14 @@ Want to forbade some variables names or extract all l10n text to single JSON fil
 
 ```joy
 @import * as foo from 'bar/foo' 
+@import zop from 'bar/zop'
 ```
 Currently it's the only syntax supported.
 
 Based on modules option it goes to:
 ```js
-import * as foo from 'bar/foo'
-var foo = require('bar/foo');
+import * as foo from 'bar/foo';
+const foo = require('bar/foo');
 define([..., 'bar/foo'], function(..., foo) {});
 ```
 
@@ -211,6 +212,22 @@ else if n > 1 && n < 100 {
 }
 else {
     more
+}
+```
+
+Put parentheses to distinguish functions bodies from conditional:
+
+```
+@if foo() {
+    @* function body *@
+} {
+    @* conditional body *@
+}
+```
+
+```
+@if (bar()) {
+    @* conditional body *@
 }
 ```
 

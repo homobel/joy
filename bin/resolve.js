@@ -11,7 +11,7 @@ function resolve(value) {
             return value;
         } catch (e) {
             console.error(`File not exists: ${value}`);
-            return;
+            return null;
         }
     }
 

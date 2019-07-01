@@ -4,3 +4,5 @@ node_modules
 *.sublime-workspace
 example/tpl/test.joy
 example/scripts/tpl/test.js
+tests
+jest.config.js

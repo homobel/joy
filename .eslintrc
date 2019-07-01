@@ -1,0 +1,220 @@
+﻿{
+    "parserOptions": {
+        "ecmaVersion": 8,
+        "impliedStrict": true,
+        "ecmaFeatures": {
+            "jsx": false
+        }
+    },
+    "env": {
+        "es6": true,
+        "browser": true,
+        "node": true,
+        "jest/globals": true
+    },
+    "globals": {
+        "define": true,
+        "requirejs": true,
+        "require": true
+    },
+    "plugins": ["jest"],
+    "rules": {
+        "no-negated-condition": 2,
+        "no-bitwise": 2,
+        "curly": [
+            2,
+            "all"
+        ],
+        "eqeqeq": 2,
+        "guard-for-in": 2,
+        "no-extend-native": 2,
+        "no-use-before-define": [
+            2,
+            {
+                "functions": false
+            }
+        ],
+        "no-caller": 2,
+        "no-irregular-whitespace": 2,
+        "no-new": 0,
+        "no-plusplus": 0,
+        "no-undef": 2,
+        "no-unused-vars": [
+            2,
+            {
+                "vars": "all",
+                "args": "after-used",
+                "caughtErrors": "none",
+                "ignoreRestSiblings": true
+            }
+        ],
+        "strict": 0,
+        "semi": [
+            2,
+            "always"
+        ],
+        "no-cond-assign": 0,
+        "no-debugger": 0,
+        "no-eq-null": 0,
+        "no-eval": 0,
+        "no-unused-expressions": 0,
+        "block-scoped-var": 0,
+        "no-iterator": 0,
+        "no-loop-func": 0,
+        "require-yield": 0,
+        "valid-typeof": 0,
+        "no-proto": 0,
+        "no-script-url": 0,
+        "no-shadow": 2,
+        "no-new-func": 0,
+        "no-new-wrappers": 0,
+        "no-invalid-this": 0,
+        "consistent-this": [
+            2,
+            "_this"
+        ],
+        "quotes": [
+            2,
+            "single"
+        ],
+        "max-len": [
+            2,
+            {
+                "code": 120,
+                "ignoreComments": true,
+                "ignoreStrings": true,
+                "ignoreTemplateLiterals": true,
+                "ignoreRegExpLiterals": true
+            }
+        ],
+        "linebreak-style": [
+            2,
+            "windows"
+        ],
+        "indent": [
+            2,
+            4,
+            {
+                "SwitchCase": 1
+            }
+        ],
+        "space-infix-ops": 2,
+        "wrap-iife": [
+            2,
+            "inside"
+        ],
+        "comma-style": [
+            2,
+            "last"
+        ],
+        "dot-notation": 2,
+        "spaced-comment": [
+            2,
+            "always"
+        ],
+        "eol-last": [2, "always"],
+        "key-spacing": [
+            2,
+            {
+                "beforeColon": false,
+                "afterColon": true
+            }
+        ],
+        "space-before-blocks": [
+            2,
+            "always"
+        ],
+        "comma-spacing": [
+            2,
+            {
+                "after": true
+            }
+        ],
+        "newline-after-var": [
+            2,
+            "always"
+        ],
+        "operator-linebreak": [
+            2,
+            "after"
+        ],
+        "no-else-return": 2,
+        "camelcase": [
+            2,
+            {
+                "properties": "always",
+                "allow": ["^expression_", "^type_"]
+            }
+        ],
+        "keyword-spacing": [
+            2,
+            {}
+        ],
+        "no-with": 2,
+        "space-unary-ops": [
+            2,
+            {
+                "words": false,
+                "nonwords": false
+            }
+        ],
+        "one-var": [
+            2,
+            "never"
+        ],
+        "space-in-parens": [
+            2,
+            "never"
+        ],
+        "no-empty": [
+            2,
+            {
+                "allowEmptyCatch": true
+            }
+        ],
+        "space-before-function-paren": [
+            2,
+            "never"
+        ],
+        "no-implicit-coercion": [
+            2,
+            {
+                "boolean": true,
+                "string": true,
+                "number": true
+            }
+        ],
+        "yoda": [
+            2,
+            "never"
+        ],
+        "array-bracket-spacing": [
+            2,
+            "never",
+            {
+                "singleValue": false
+            }
+        ],
+        "quote-props": [
+            2,
+            "as-needed"
+        ],
+        "no-multiple-empty-lines": 2,
+        "no-mixed-spaces-and-tabs": 2,
+        "no-trailing-spaces": 2,
+        "comma-dangle": [
+            2,
+            "never"
+        ],
+        "no-spaced-func": 2,
+        "semi-spacing": [
+            2,
+            {
+                "before": false,
+                "after": true
+            }
+        ],
+        "no-nested-ternary": 2,
+        "no-multi-spaces": 2
+    }
+}

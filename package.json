@@ -1,10 +1,10 @@
 {
     "name": "joytpl",
-    "version": "0.0.11",
+    "version": "0.0.12",
     "description": "joy - js template engine with short syntax and modern features",
     "main": "index.js",
     "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1"
+        "test": "jest"
     },
     "repository": {
         "type": "git",
@@ -33,10 +33,14 @@
         "prettier": "^1.18.2"
     },
     "devDependencies": {
-        "glob": "^7.1.4",
-        "ensureDir": "^1.0.6",
         "async": "^3.1.0",
-        "pegjs": "^0.10.0",
-        "gulp": "^4.0.2"
+        "ensureDir": "^1.0.6",
+        "eslint": "^6.0.1",
+        "eslint-plugin-jest": "^22.7.1",
+        "glob": "^7.1.4",
+        "gulp": "^4.0.2",
+        "gulp-eslint": "^6.0.0",
+        "jest": "^24.8.0",
+        "pegjs": "^0.10.0"
     }
 }

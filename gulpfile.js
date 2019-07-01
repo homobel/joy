@@ -2,6 +2,7 @@
 const fs = require('fs');
 const path = require('path');
 const gulp = require('gulp');
+const eslint = require('gulp-eslint');
 const glob = require('glob');
 const peg = require("pegjs");
 const async = require('async');
@@ -72,3 +73,12 @@ gulp.task('watch', gulp.series('parser', 'example', 'runtime', () => {
     gulp.watch('example/**/*.joy', gulp.series('example'));
     gulp.watch('runtime.js', gulp.series('runtime'));
 }));
+
+gulp.task('eslint', () => {
+    return gulp.src([
+        'bin/**/*.js',
+        'tests/**/*.js',
+        'lib/**/*.js',
+        '!lib/generated/**'
+    ]).pipe(eslint()).pipe(eslint.format());
+});
