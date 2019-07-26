@@ -49,6 +49,10 @@
     print.short = 'p';
 
     function options(value) {
+        if (value === undefined) {
+            value = {};
+        }
+
         var onlyContent = true;
 
         if (value !== null && typeof value === 'object') {
