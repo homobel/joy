@@ -33,7 +33,7 @@
     havValue.short = 'v';
 
     function loop(obj, cb) {
-        return obj.map(cb).join('');
+        return (obj || []).map(cb).join('');
     }
 
     loop.short = 'l';
