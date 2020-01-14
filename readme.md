@@ -8,7 +8,7 @@ Summary:
 1. razor like syntax
 2. precompilation only
 3. templates are modules
-4. templates and helpers are pure functions
+4. templates and helpers are (almost) pure functions
 5. clear names collision solving
 6. compression in mind
 
@@ -61,29 +61,29 @@ joy.build(inputText, options, function(err, data) {
         return;
     }
 
-    // data.content
-    // data.extracted
+    // data.content - result text
+    // data.extracted - object that contains all extractions
 });
 ```
 Beyond same options available in bash there some advanced ones:
 ```
 {
     ...
-    extractors: {type: [fn1, fn2], ...},
-    validators: {type: [fn3], ...}
+    extractors: {NodeType: [fn1, fn2], ...},
+    validators: {NodeType: [fn3], ...}
     
-    // fnN(node, exported, options) {...}
+    // where fnN(node, exported, options) {...}
 }
 ```
 You can add custom extractors or validators to specific AST node type.  
-Want to forbade some variables names or extract all l10n text to single JSON file? No problem.
+Want to forbid some variables names or extract all l10n text to single JSON file? No problem.
 
 ## Syntax
 
 #### Comments
 
 ```joy
-@* you will never recall what this code for *@
+@* you will never recall what this code is for *@
 ```
 
 #### Imports

@@ -2,7 +2,7 @@ node_modules
 .idea/
 *.sublime-project
 *.sublime-workspace
-example/tpl/test.joy
-example/scripts/tpl/test.js
+example/tpl/hidden.joy
+example/scripts/tpl/hidden.js
 tests
 jest.config.js
