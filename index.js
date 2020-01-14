@@ -1,11 +1,15 @@
+const fs = require('fs');
 const ASTY = require('asty');
 const prettier = require('prettier');
 const pegUtil = require('pegjs-util');
 const parser = require('./lib/generated/parser');
 const processor = require('./lib/processor/processor');
 const defaults = require('./lib/defaults');
+const requireFromString = require('require-from-string');
 
-module.exports = {
+const tplCache = new Map();
+
+const joy = {
     build(input, options, cb) {
         if (cb === undefined && typeof options === 'function') {
             cb = options;
@@ -58,3 +62,30 @@ module.exports = {
         }
     }
 };
+
+// to avoid binding
+joy.__express = (filePath, data, cb) => {
+    if (tplCache.has(filePath)) {
+        cb(null, tplCache.get(filePath)(data));
+    }
+    else {
+        fs.readFile(filePath, (err, content) => {
+            if (err) {
+                return cb(new Error(err));
+            }
+
+            joy.build(content.toString(), {modules: 'commonjs'}, (err, result) => {
+                if (err) {
+                    return cb(new Error(err));
+                }
+
+                const tpl = requireFromString(result.content);
+                tplCache.set(filePath, tpl);
+
+                cb(null, tpl(data));
+            });
+        });
+    }
+};
+
+module.exports = joy;

@@ -46,6 +46,24 @@ Write result in an output file:
 joytpl path/to/input/file > output/file
 ```
 
+### Express
+
+```js
+app.set('view engine', 'joytpl');
+```
+
+To avoid suffix:
+```js
+const joy = require('joytpl');
+
+// ...
+
+app.engine('joy', joy.__express);
+app.set('view engine', 'joy');
+
+// ...
+```
+
 ### Code
 
 ```bash
