@@ -1,3 +1,4 @@
+
 const fs = require('fs');
 const ASTY = require('asty');
 const prettier = require('prettier');
@@ -6,8 +7,6 @@ const parser = require('./lib/generated/parser');
 const processor = require('./lib/processor/processor');
 const defaults = require('./lib/defaults');
 const requireFromString = require('require-from-string');
-
-const tplCache = new Map();
 
 const joy = {
     build(input, options, cb) {
@@ -63,29 +62,36 @@ const joy = {
     }
 };
 
-// to avoid binding
-joy.__express = (filePath, data, cb) => {
-    if (tplCache.has(filePath)) {
-        cb(null, tplCache.get(filePath)(data));
+// Express support
+
+const expressOptions = {
+    modules: 'commonjs',
+    validators: {
+        Import: [
+            () => {
+                throw Error('Import statement not allowed in express views, plz use precompilation if u need it');
+            }
+        ]
     }
-    else {
-        fs.readFile(filePath, (err, content) => {
+};
+
+// to avoid binding
+joy.express = joy.__express = (filePath, data, cb) => {
+    fs.readFile(filePath, (err, content) => {
+        if (err) {
+            return cb(err);
+        }
+
+        joy.build(content.toString(), expressOptions, (err, result) => {
             if (err) {
-                return cb(new Error(err));
+                return cb(err);
             }
 
-            joy.build(content.toString(), {modules: 'commonjs'}, (err, result) => {
-                if (err) {
-                    return cb(new Error(err));
-                }
+            const tpl = requireFromString(result.content);
 
-                const tpl = requireFromString(result.content);
-                tplCache.set(filePath, tpl);
-
-                cb(null, tpl(data));
-            });
+            cb(null, tpl(data));
         });
-    }
+    });
 };
 
 module.exports = joy;

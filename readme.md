@@ -1,25 +1,20 @@
 # Joy
 
-Js template engine.
+Template engine we use in [Triggre](https://triggre.com/).
 
-This is an early release, use it at your own risk.
+_This is an early release, use it at your own risk._
 
 Summary:
 1. razor like syntax
-2. precompilation only
+2. precompilation oriented
 3. templates are modules
-4. templates and helpers are (almost) pure functions
+4. templates and helpers are functions
 5. clear names collision solving
 6. compression in mind
 
 ## Usage
 
 ### Bash
-
-Installation:
-```bash
-npm i -g joytpl
-```
 
 ```
 joytpl -h
@@ -48,6 +43,8 @@ joytpl path/to/input/file > output/file
 
 ### Express
 
+**U can't use imports within express views.** If u really need it plz use precompilation instead.
+
 ```js
 app.set('view engine', 'joytpl');
 ```
@@ -58,17 +55,13 @@ const joy = require('joytpl');
 
 // ...
 
-app.engine('joy', joy.__express);
+app.engine('joy', joy.express);
 app.set('view engine', 'joy');
 
 // ...
 ```
 
 ### Code
-
-```bash
-npm i joytpl
-```
 
 ```js
 const joy = require('joytpl');
@@ -95,6 +88,11 @@ Beyond same options available in bash there some advanced ones:
 ```
 You can add custom extractors or validators to specific AST node type.  
 Want to forbid some variables names or extract all l10n text to single JSON file? No problem.
+
+### Dev Tools
+
+* [gulp-joy](https://www.npmjs.com/package/gulp-joy)
+* [sublime-joy](https://github.com/homobel/sublime-joy)
 
 ## Syntax
 
@@ -158,14 +156,14 @@ Hello, @data.name!
 Some more examples:
 
 ```joy
-@htmlEscaped @* escape utility by default *@
-@!htmlRaw @* raw html *@
+@data.htmlEscaped @* escape utility by default *@
+@!data.htmlRaw @* raw html *@
 
-@foo.boo.htmlEscaped  @* with namespace *@
-@!foo.boo.htmlRaw
+@data.foo.boo.htmlEscaped  @* with namespace *@
+@!data.foo.boo.htmlRaw
 
-@(hello)world together @* with borders *@
-@!(hello)again
+@(data.hello)world together @* with borders *@
+@!(data.hello)again
 ```
 
 #### Functions
@@ -180,12 +178,12 @@ Arguments in functions are expressions with any supported types.
 
 Here _name='foo'_ is named argument.
 
-Unlike in js, **BLOCK AFTER FUNCTION IS ALSO FUNCTION'S NAMED ARGUMENT**(it's reserved name - content). Treat it as an easy form of passing big chunk of text.  
+Unlike in js, **block after function is also function's named argument**(it's reserved name - content). Treat it as an easy form of passing big chunk of text.  
 Also in case text in block is JSON it's parsed and passed to the function as a data object **ignoring other arguments**.
 
 If function has named argument all arguments must be named.
 
-So in general I see two usage scenarios:
+So in general there are two usage scenarios:
 
 First - we have raw js function and want to use it as a tpl helper:
 ```joy
@@ -278,7 +276,7 @@ Types that can be used in expressions:
 * string
 * identifier
 
-**OBJECTS AND ARRAYS ARE NOT SUPPORTED YET**
+**Objects and arrays are not supported yet.**
 
 #### Operators
 
@@ -290,7 +288,7 @@ Operators that can be used in expressions:
 * \+ -
 * \* / %
 
-**OTHER OPERATORS ARE NOT SUPPORTED YET**
+**Other operators are not supported yet.**
 
 For more details see example directory.
 

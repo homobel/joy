@@ -1,6 +1,6 @@
 {
     "name": "joytpl",
-    "version": "0.0.16",
+    "version": "0.0.17",
     "description": "joy - js template engine with short syntax and modern features",
     "main": "index.js",
     "scripts": {
@@ -19,29 +19,31 @@
     "keywords": [
         "joy",
         "template",
+        "engine",
         "html",
         "precompilation",
         "modular",
-        "razor"
+        "razor",
+        "express"
     ],
     "author": "Archy Sharp",
     "license": "MIT",
     "dependencies": {
-        "asty": "^1.8.6",
+        "asty": "^1.8.9",
         "commander": "^4.1.0",
-        "pegjs-util": "^1.4.17",
-        "prettier": "^1.18.2",
+        "pegjs-util": "^1.4.19",
+        "prettier": "^1.19.1",
         "require-from-string": "^2.0.2"
     },
     "devDependencies": {
         "async": "^3.1.0",
         "ensureDir": "^1.0.6",
-        "eslint": "^6.1.0",
+        "eslint": "^6.8.0",
         "eslint-plugin-jest": "^23.6.0",
-        "glob": "^7.1.4",
+        "glob": "^7.1.6",
         "gulp": "^4.0.2",
         "gulp-eslint": "^6.0.0",
-        "jest": "^24.8.0",
+        "jest": "^24.9.0",
         "pegjs": "^0.10.0"
     }
 }

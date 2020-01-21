@@ -53,8 +53,6 @@ gulp.task('example', finish => {
                         fs.writeFileSync(filePath, data.content, 'utf8');
                         fileCb();
                     });
-
-
                 });
             };
         }), finish)
