@@ -198,7 +198,7 @@ We want to use a tpl from other one:
 @import * as card from 'foo/card'
 @import * as fullName from 'bar/fullName'
 
-@card() {
+@!card() {
     @fullName(name=data.name, surname=data.surname)
 }
 ```
@@ -209,7 +209,7 @@ or
 @import * as card from 'foo/card'
 @import * as fullName from 'bar/fullName'
 
-@card() {
+@!card() {
     @fullName() {{
         "name": "@data.name",
         "surname": "@data.surname"
@@ -235,7 +235,7 @@ Put parentheses to distinguish functions bodies from conditional:
 
 ```
 @if foo() {
-    @* function body *@
+    @* function argument *@
 } {
     @* conditional body *@
 }
@@ -291,6 +291,6 @@ Operators that can be used in expressions:
 
 **Other operators are not supported yet.**
 
-For more details see example directory.
+For more details see examples directory.
 
 Enjoy! :)

@@ -2,6 +2,7 @@
 @import * as l10n from 'utils/l10n'
 @import * as input from 'tpl/forms/input' @* markup from other tpl *@
 @import * as alert from 'tpl/alert'
+@import * as alert from 'tpl/alert'
 
 @!alert(type='info') {@data.info}
 @!alert() {

@@ -17,7 +17,7 @@ const joy = {
 
         options = Object.assign({}, defaults, options);
 
-        this.parse(input, options, (err, ast) => {
+        this.parse(input, (err, ast) => {
             if (err) {
                 console.error(err);
             }
@@ -25,7 +25,6 @@ const joy = {
                 // console.log(ast.dump().replace(/\n$/, ""));
                 this.process(ast, options, (err, result) => {
                     if (err) {
-                        console.error(err);
                         cb(err);
                     }
                     else {
@@ -35,7 +34,7 @@ const joy = {
             }
         });
     },
-    parse(input, options, cb) {
+    parse(input, cb) {
         const asty = new ASTY();
         const result = pegUtil.parse(parser, input, {
             startRule: 'start',

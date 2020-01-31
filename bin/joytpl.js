@@ -1,11 +1,11 @@
 #!/usr/bin/env node
 
 const fs = require('fs');
+const path = require('path');
 const program = require('commander');
 const defaults = require('../lib/defaults');
 const packageFile = require('../package.json');
 const joy = require('../' + packageFile.main);
-const resolve = require('./resolve');
 
 program
     .version(packageFile.version)
@@ -18,9 +18,16 @@ program
     .option('-b, --beautify <beautify>', 'formatted code', defaults.beautify)
     .parse(process.argv);
 
-const inputPath = resolve(program.args[0]);
+let inputPath = program.args[0];
 
-if (inputPath) {
+if (!inputPath) {
+    console.error('File not specified');
+    return;
+}
+
+inputPath = path.resolve(inputPath);
+
+if (fs.existsSync(inputPath) && fs.statSync(inputPath).isFile()) {
     const input = fs.readFileSync(inputPath, program.charset);
     const options = {
         charset: program.charset,
@@ -38,4 +45,7 @@ if (inputPath) {
         }
         console.log(data.content);
     });
+}
+else {
+    console.error(`File not exists: ${inputPath}`);
 }

@@ -21,8 +21,8 @@ gulp.task('parser', finish => {
     finish();
 });
 
-gulp.task('example', finish => {
-    const base = path.join(__dirname, 'example/tpl');
+gulp.task('examples', finish => {
+    const base = path.join(__dirname, 'examples/real-world/tpl');
 
     glob(path.join(base, '**/*.joy'), (err, files) => {
         async.parallel(files.map((file) => {
@@ -39,7 +39,7 @@ gulp.task('example', finish => {
                     }
 
                     const filePath = path.join(
-                        path.join(__dirname, 'example/scripts/tpl'),
+                        path.join(__dirname, 'examples/real-world/scripts/tpl'),
                         path.normalize(file).replace(base, '').replace('.joy', '.js')
                     );
                     const fileDir = path.dirname(filePath);
@@ -61,14 +61,14 @@ gulp.task('example', finish => {
 
 gulp.task('runtime', finish => {
     fs.createReadStream(path.join(__dirname, 'runtime.js'))
-        .pipe(fs.createWriteStream(path.join(__dirname, 'example/scripts/libs/joy-runtime.js')));
+        .pipe(fs.createWriteStream(path.join(__dirname, 'examples/real-world/scripts/libs/joy-runtime.js')));
 
     finish();
 });
 
-gulp.task('watch', gulp.series('parser', 'example', 'runtime', () => {
+gulp.task('watch', gulp.series('parser', 'examples', 'runtime', () => {
     gulp.watch('grammar/*.pegjs', gulp.series('parser'));
-    gulp.watch('example/**/*.joy', gulp.series('example'));
+    gulp.watch('examples/real-world/**/*.joy', gulp.series('example'));
     gulp.watch('runtime.js', gulp.series('runtime'));
 }));
 

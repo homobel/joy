@@ -1,6 +1,6 @@
 {
     "name": "joytpl",
-    "version": "0.0.18",
+    "version": "0.0.19",
     "description": "joy - js template engine with short syntax and modern features",
     "main": "index.js",
     "scripts": {
@@ -36,14 +36,16 @@
         "require-from-string": "^2.0.2"
     },
     "devDependencies": {
-        "async": "^3.1.0",
+        "async": "^3.1.1",
         "ensureDir": "^1.0.6",
         "eslint": "^6.8.0",
         "eslint-plugin-jest": "^23.6.0",
+        "express": "^4.17.1",
         "glob": "^7.1.6",
         "gulp": "^4.0.2",
         "gulp-eslint": "^6.0.0",
-        "jest": "^24.9.0",
-        "pegjs": "^0.10.0"
+        "jest": "^25.1.0",
+        "pegjs": "^0.10.0",
+        "supertest": "^4.0.2"
     }
 }
