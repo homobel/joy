@@ -68,7 +68,7 @@ gulp.task('runtime', finish => {
 
 gulp.task('watch', gulp.series('parser', 'examples', 'runtime', () => {
     gulp.watch('grammar/*.pegjs', gulp.series('parser'));
-    gulp.watch('examples/real-world/**/*.joy', gulp.series('example'));
+    gulp.watch('examples/real-world/**/*.joy', gulp.series('examples'));
     gulp.watch('runtime.js', gulp.series('runtime'));
 }));
 
