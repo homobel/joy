@@ -1,0 +1,12 @@
+@import bar from 'foo/bar'
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Non valid</title>
+</head>
+<body>
+    Try to use @bar()
+</body>
+</html>

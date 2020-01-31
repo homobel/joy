@@ -1,0 +1,9 @@
+@if data.n < 1 {
+    less
+}
+else if data.n > 1 && data.n < 100 {
+    in range
+}
+else {
+    more
+}

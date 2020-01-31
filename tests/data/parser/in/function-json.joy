@@ -1,0 +1,6 @@
+@!card() {
+    @fullName() {{
+        "name": "@data.name",
+        "surname": "@data.surname"
+    }}
+}

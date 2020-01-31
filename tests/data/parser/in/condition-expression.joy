@@ -1,0 +1,16 @@
+@if
+    !(-k + +n) && (
+        z * j < 100500 ||
+        q / w > 1.0 + i ||
+        m % l === 0
+    ) || (
+        h >= 15 &&
+        f <= 3 &&
+        o != null &&
+        o != undefined
+    ) && (
+        foo('test' + 1 * v) != true &&
+        bar("test" + 1 * r) {omg} !== false
+    ) {
+        wow!
+    }

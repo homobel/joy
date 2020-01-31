@@ -1,0 +1,5 @@
+<ul>
+    @each key:value in data.items {
+        <li class="@if key % 2 == 0 {even} else {odd}">@value</li>
+    }
+<ul>

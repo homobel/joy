@@ -1,0 +1,5 @@
+<ul>
+    @each item in data.items {
+        <li>@item</li>
+    }
+<ul>
